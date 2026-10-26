@@ -1,0 +1,268 @@
+/* ==========================================================================
+   Simply Rational look for the Shiny app
+   Header, hero and footer follow www.simplyrational.de and the data science
+   blog (design/styles.css); the rest styles the calculator itself.
+   ========================================================================== */
+:root {
+  --sr-u: calc(0.2283px + 0.0679vw);            /* header scale unit, phones/tablets */
+  --sr-ink: #020202;
+  --sr-cream: #FFF5EB;
+  --sr-purple: #661AAE;
+  --sr-purple-deep: #501488;
+  --sr-teal: #1AA7B4;
+  --sr-orange: #EA5A0C;
+  --sr-red: #C00D46;
+  --sr-sans: "Bricolage Grotesque", sans-serif;
+  --sr-serif: "Noto Serif JP", serif;
+}
+@media (min-width: 992px) {
+  :root { --sr-u: min(1px, calc(0.0716vw - 0.05025px)); }
+}
+
+body {
+  background: var(--sr-cream);
+  color: var(--sr-ink);
+  font-family: var(--sr-sans);
+  overflow-x: clip;
+}
+h1, h2, h3, h4, .sr-title, .value-box-title { font-family: var(--sr-serif); }
+
+/* ---- Header ---------------------------------------------------------------- */
+.sr-header {
+  position: relative;
+  z-index: 10;
+  background: var(--sr-cream);
+  border-bottom: round(nearest, calc(6 * var(--sr-u)), 1px) solid var(--sr-purple);
+}
+.sr-header-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: calc(120 * var(--sr-u));
+  padding: 0 calc(56 * var(--sr-u));
+}
+.sr-header-logo img {
+  display: block;
+  width: max(82px, calc(170 * var(--sr-u)));
+  height: auto;
+  transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sr-header-logo:hover img { opacity: .8; }
+.sr-header-title {
+  margin-left: 80px;
+  font-size: clamp(14px, calc(1.68vw - 2.2px), 22px);
+  font-weight: 600;
+  letter-spacing: .025em;
+  white-space: nowrap;
+}
+.sr-header-cta {
+  margin-left: auto;
+  padding: max(8px, calc(11 * var(--sr-u))) max(20px, calc(52 * var(--sr-u)));
+  border-radius: 10px;
+  background: var(--sr-purple);
+  color: var(--sr-cream) !important;
+  font-size: max(11px, calc(15 * var(--sr-u)));
+  font-weight: 600;
+  letter-spacing: .025em;
+  white-space: nowrap;
+  text-decoration: none;
+  box-shadow: 0 10px 28px -10px rgba(102, 26, 174, .55);
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sr-header-cta:hover { background: var(--sr-purple-deep); }
+@media (max-width: 991.98px) {
+  .sr-header-title { display: none; }
+}
+
+/* ---- Hero: stem from the header line, dot, headline, intro ----------------- */
+.sr-hero { margin-bottom: 3.5rem; text-align: center; }
+.sr-hero-stem {
+  position: relative;
+  width: 3px;
+  height: 72px;
+  margin: 0 auto 38px;
+  background: var(--sr-purple);
+}
+.sr-hero-stem::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -22px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--sr-purple);
+  transform: translateX(-50%);
+}
+.sr-hero h1 {
+  margin: 0 0 1.25rem;
+  font-weight: 800;
+  font-size: clamp(1.6rem, 0.6rem + 3.6vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -.025em;
+}
+.sr-hero p {
+  max-width: 640px;
+  margin: 0 auto;
+  font-weight: 500;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+/* ---- Main ----------------------------------------------------------------- */
+.sr-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.sr-section-title {
+  position: relative;
+  margin: 3rem 0 1.25rem;
+  padding-bottom: .6rem;
+  font-weight: 800;
+  font-size: clamp(1.35rem, 1rem + 1.2vw, 1.9rem);
+  letter-spacing: -.02em;
+}
+/* purple rule ending in a dot, like the blog's h2 */
+.sr-section-title::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 8px; bottom: .3rem;
+  height: 2px;
+  background: var(--sr-purple);
+}
+.sr-section-title::before {
+  content: "";
+  position: absolute;
+  right: 0; bottom: calc(.3rem - 3px);
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--sr-purple);
+}
+
+.card {
+  border: 1.5px solid var(--sr-purple);
+  border-radius: 14px;
+  background: var(--sr-cream);
+}
+.card-header { background: transparent; border-bottom-color: rgba(102,26,174,.25); }
+.card-header .sr-title { font-weight: 800; font-size: 1.1rem; }
+.bslib-value-box { border: 1.5px solid var(--sr-purple); border-radius: 14px; }
+.value-box-value { font-size: 1.45rem; white-space: nowrap; font-family: var(--sr-sans); font-weight: 800; color: var(--sr-purple); }
+.value-box-title { font-size: .9rem; }
+
+.btn { font-weight: 600; letter-spacing: .02em; }
+.btn-primary {
+  border-radius: 10px;
+  box-shadow: 0 10px 28px -10px rgba(102, 26, 174, .55);
+}
+.btn-primary:hover { background: var(--sr-purple-deep); border-color: var(--sr-purple-deep); }
+.btn-outline-primary { border-radius: 999px; }
+.form-control, .form-select { background-color: #fff; border-color: rgba(102,26,174,.3); }
+.form-control:focus { border-color: var(--sr-purple); box-shadow: 0 0 0 .2rem rgba(102,26,174,.15); }
+.nav-underline .nav-link.active { color: var(--sr-purple); }
+.irs--shiny .irs-bar, .irs--shiny .irs-single { background: var(--sr-purple); border-color: var(--sr-purple); }
+
+/* ---- Calculator -------------------------------------------------------------- */
+.sr-decision { margin-bottom: 1rem; }
+.sr-decision-head { display: flex; gap: .75rem; align-items: flex-end; }
+.sr-decision-head .form-group { margin-bottom: 0; }
+.sr-decision-head input[type=text] { font-weight: 700; font-size: 1.05rem; }
+.sr-badge { flex: none; width: 2rem; height: 2rem; border-radius: 50%; background: var(--sr-purple);
+  color: var(--sr-cream); display: grid; place-items: center; font-weight: 700; margin-bottom: .2rem; }
+.sr-option { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr) minmax(0,1.2fr) minmax(0,1.2fr) auto; gap: .6rem;
+  align-items: end; padding: .25rem 0; border-bottom: 1px dashed rgba(102,26,174,.2); }
+.sr-option .form-group, .sr-event .form-group { margin-bottom: .4rem; }
+.sr-event { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr) auto; gap: .6rem;
+  align-items: end; max-width: 420px; }
+.sr-event .shiny-input-container { width: auto !important; min-width: 0; }
+.sr-event label, .sr-option label { font-size: .78rem; }
+.sr-subtitle { font-family: var(--sr-serif); font-weight: 800; margin: 1rem 0 .25rem; }
+.sr-option .shiny-input-container, .sr-decision-head .shiny-input-container { width: auto !important; min-width: 0; }
+.sr-decision-head > .shiny-input-container:first-of-type { flex: 1; }
+.sr-decision-head > .shiny-input-container:last-child { flex: none; width: 150px !important; }
+.sr-icon-btn { margin-bottom: .45rem; color: var(--sr-purple); font-size: 1.2rem; line-height: 1; }
+.sr-decision-actions { display: flex; gap: .5rem; flex-wrap: wrap; padding-top: .6rem; }
+.sr-danger { color: var(--sr-red); }
+.sr-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+.sr-table th { text-align: right; vertical-align: bottom; font-size: .8rem; font-weight: 600; border-bottom: 2px solid var(--sr-ink); padding: .35rem .5rem; }
+.sr-table td { white-space: nowrap; text-align: right; padding: .3rem .5rem; border-bottom: 1px solid rgba(2,2,2,.08); }
+.sr-table th:nth-child(-n+2), .sr-table td:nth-child(-n+2) { text-align: left; }
+.sr-table tr.sr-sub td { font-weight: 700; border-bottom: 1px solid var(--sr-purple); }
+.sr-table tr.sr-total td { font-weight: 800; border-top: 2px solid var(--sr-ink); background: rgba(102,26,174,.07); }
+.sr-neg { color: var(--sr-red); }
+.sr-note { font-size: .8rem; opacity: .75; }
+
+/* Simply Rational Szenario selection */
+#szenarien .checkbox { margin-bottom: .35rem; }
+#szenarien .sr-note { white-space: nowrap; }
+.form-check-input:checked { background-color: var(--sr-purple); border-color: var(--sr-purple); }
+.sr-custom { margin: 0 0 1rem 1.5rem; padding-left: .75rem; border-left: 2px solid rgba(102,26,174,.25); }
+@media (max-width: 640px) { #szenarien .sr-note { white-space: normal; } }
+
+/* Share link */
+.sr-share { display: flex; gap: .5rem; align-items: center; }
+.sr-share input { flex: 1; min-width: 0; font-family: ui-monospace, monospace; font-size: .78rem; }
+.sr-params code { color: var(--sr-purple); }
+.sr-params td, .sr-params th { text-align: left !important; white-space: normal !important; }
+
+@media (max-width: 640px) {
+  .sr-option { grid-template-columns: 1fr 1fr; }
+  .sr-decision-head { flex-wrap: wrap; }
+  .sr-decision-head > .shiny-input-container:first-of-type { flex: 1 1 calc(100% - 2.75rem); }
+}
+
+/* ---- Footer (mirrors www.simplyrational.de) ------------------------------- */
+.sr-footer {
+  position: relative;
+  margin-top: 9rem;
+  color: var(--sr-cream);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.sr-footer-arc {
+  position: absolute;
+  left: 50%;
+  top: clamp(-90px, -6.35vw, -40px);
+  width: min(68.2vw, 980px);
+  height: clamp(100px, 17vw, 260px);
+  transform: translateX(-50%);
+  overflow: hidden;
+  pointer-events: none;
+}
+.sr-footer-arc > div { width: 100%; aspect-ratio: 1; border-radius: 50%; background: var(--sr-purple); }
+.sr-footer-bar { position: relative; z-index: 1; background: var(--sr-purple); padding: 0 6vw; }
+.sr-footer-inner { max-width: 1200px; margin: 0 auto; padding: 2.5rem 0 1rem; }
+.sr-footer-main { position: relative; display: flex; align-items: center; min-height: 120px; }
+.sr-footer p { margin: 0; }
+.sr-footer-contact > * + * { margin-top: 8px; }
+.sr-footer-contact > .sr-tight { margin-top: 4px; }
+.sr-footer-company { font-weight: 700; }
+.sr-footer a { color: var(--sr-cream); text-decoration: underline; text-underline-offset: 2px; }
+.sr-footer a:hover { opacity: .8; }
+.sr-footer-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(180px, 26vw, 380px);
+  aspect-ratio: 1024 / 385;
+  transform: translate(-50%, -50%);
+  background: url("simply-rational-logo.webp") center / contain no-repeat;
+  filter: brightness(0) invert(96%) sepia(6%) saturate(600%) hue-rotate(330deg);
+}
+.sr-footer-legal { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: .5rem; }
+.sr-footer-copy {
+  margin-top: 1.75rem;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 245, 234, .35);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: .9;
+}
+@media (max-width: 767.98px) {
+  .sr-footer-main { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .sr-footer-logo { position: static; transform: none; order: -1; }
+  .sr-footer-legal { margin-left: 0; align-items: flex-start; }
+}

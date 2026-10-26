@@ -1,0 +1,47 @@
+project:
+  type: website
+  output-dir: docs
+
+lang: de
+  
+format:
+  html:
+    css: styles.css
+    embed-resources: false
+    include-after-body: _footer.html
+
+language:
+  listing-page-field-categories: "Categories"
+  listing-page-category-all: "All"
+
+website:
+  description: "Simply Rational ist eine Ausgründung aus dem Max-Planck-Institut für Bildungsforschung, einer weltweit führenden Institution für die Erforschung von Entscheidungsstrategien. Co-Founder Prof. Gerd Gigerenzer ist einer der meistzitierten Psychologen weltweit.
+Unsere Arbeit basiert auf nobelpreisprämierten Ansätzen aus Data Science, Behavioral Science und Organisationsentwicklung. Durch die Verbindung menschlicher und künstlicher Intelligenz schaffen wir erfolgreiche Lösungen für komplexe Entscheidungssituationen."
+  site-url: https://simply-rational-gmbh.github.io/datascienceblog/ 
+  title: "Data Science Blog"
+  search: false
+  navbar:
+    background: "#FFF5EB"
+    foreground: "#020202"
+    title: false
+    right:
+      - text: "DE"
+        href: index.qmd
+      - text: "EN"
+      - text: "Gute Entscheidung"
+        href: "mailto:GuteEntscheidung@simplyrational.de"
+
+# babelquarto:
+#   languagecodes:
+#   - name: en
+#     text: "English Version"
+#   - name: de
+#     text: "German Version"
+#   mainlanguage: 'de'
+#   languages: ['en']
+# title-en: title in en
+# description-en: description in en
+# author-en: author in en
+# lang: de
+
+
